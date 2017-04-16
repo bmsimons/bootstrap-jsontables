@@ -1,4 +1,4 @@
-####**Bootstrap-JSONTables**
+**Bootstrap-JSONTables**
 --------------
 A simple and quick extension to jQuery that allows you to:
 
