@@ -44,7 +44,7 @@ function JSONTable(tableObject)
 			this.clearTable()
 			return
 		}
-		rootTableObject = this.table.clone().empty().append('<tr></tr>')
+		rootTableObject = this.table.clone().empty().append('<thead><tr></tr></thead>')
 		rootHeaderRow = rootTableObject.find('tr')
 		tableHeaderKeyArray = []
 		tableHeaderKeys = Object.keys(jsonSourceData[0])
@@ -53,6 +53,7 @@ function JSONTable(tableObject)
 			tableHeaderKeyArray.push(tableHeaderKeys[kc])
 			$(rootHeaderRow).append('<th>'+tableHeaderKeys[kc]+'</th>')
 		}
+		rootTableObject.append("<tbody></tbody>")
 		for (var jr = 0; jr < jsonSourceData.length; jr++)
 		{
 			tableDataRow = $('<tr></tr>')
@@ -60,9 +61,9 @@ function JSONTable(tableObject)
 			{
 				tableDataRow.append('<td>'+jsonSourceData[jr][tableHeaderKeyArray[ki]])
 			}
-			rootTableObject.append(tableDataRow)
+			rootTableObject.find("tbody").append(tableDataRow)
 		}
-		this.table.html(rootTableObject)
+		this.table.parent().html(rootTableObject)
 		this.tableJSON = jsonSourceData
 		if (setFullJSON)
 		{

@@ -7,7 +7,7 @@ A simple and quick extension to jQuery that allows you to:
 
 It also has extra functionality to filter table data based on a search query.
 
-Basic example:
+**Basic example**:
 ```html
 <table id="basicTable" class="table">
 	<thead>
