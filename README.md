@@ -71,6 +71,7 @@ This should result in this table-structure in your DOM after 4 seconds:
 		<tr>
 			<td>4</td>
 			<td>Jack</td>
+		</tr>
 	</tbody>
 </table>
 ```
