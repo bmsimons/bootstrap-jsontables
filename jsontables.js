@@ -63,7 +63,7 @@ function JSONTable(tableObject)
 			}
 			rootTableObject.find("tbody").append(tableDataRow)
 		}
-		this.table.parent().html(rootTableObject)
+		this.table.html(rootTableObject)
 		this.tableJSON = jsonSourceData
 		if (setFullJSON)
 		{
@@ -76,7 +76,7 @@ function JSONTable(tableObject)
 		this.isTableFiltered = true
 		resultList = []
 		searchQuery = searchQuery.toLowerCase()
-		sourceTableJSON = this.tableJSON
+		sourceTableJSON = this.tableFullJSON
 		sourceTableJSONLength = sourceTableJSON.length
 		sourceTableKeys = Object.keys(sourceTableJSON[0])
 		sourceTableKeysLength = sourceTableKeys.length
