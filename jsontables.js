@@ -71,6 +71,11 @@ function JSONTable(tableObject)
 		}
 	}
 
+	this.limitJSON = function(page = 0, limit = 25, updateTableDirectly = false, inputJSON = this.tableJSON)
+	{
+		return inputJSON.slice(page*limit, (page*limit)+limit)
+	}
+
 	this.filter = function(searchQuery)
 	{
 		this.isTableFiltered = true
@@ -80,15 +85,25 @@ function JSONTable(tableObject)
 		sourceTableJSONLength = sourceTableJSON.length
 		sourceTableKeys = Object.keys(sourceTableJSON[0])
 		sourceTableKeysLength = sourceTableKeys.length
-		for (var fj = 0; fj < sourceTableJSONLength; fj++)
+		searchQuerySplit = searchQuery.split(" ")
+		searchQuerySplitLength = searchQuerySplit.length
+		for (fj = 0; fj < sourceTableJSONLength; fj++)
 		{
-			for (tk = 0; tk < sourceTableKeysLength; tk++)
+			tempResultListLength = 0
+			for (ql = 0; ql < searchQuerySplitLength; ql++)
 			{
-				if (sourceTableJSON[fj][sourceTableKeys[tk]].toLowerCase().indexOf(searchQuery) != -1)
+				for (tk = 0; tk < sourceTableKeysLength; tk++)
 				{
-					resultList.push(sourceTableJSON[fj])
-					break
+					if (sourceTableJSON[fj][sourceTableKeys[tk]].toLowerCase().indexOf(searchQuerySplit[ql]) != -1)
+					{
+						tempResultListLength++
+						break
+					}
 				}
+			}
+			if ((tempResultListLength == searchQuerySplitLength))
+			{
+				resultList.push(sourceTableJSON[fj])
 			}
 		}
 		if (!searchQuery)
