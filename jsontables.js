@@ -63,7 +63,7 @@ function JSONTable(tableObject)
 			}
 			rootTableObject.find("tbody").append(tableDataRow)
 		}
-		this.table.html(rootTableObject)
+		this.table.html(rootTableObject[0].innerHTML)
 		this.tableJSON = jsonSourceData
 		if (setFullJSON)
 		{
